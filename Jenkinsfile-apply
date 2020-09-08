@@ -23,10 +23,7 @@ pipeline {
       }
       steps {
         sh 'oc apply -k config'
-        sh 'oc wait co/authentication --for condition=Progressing \
---timeout 15s || true'
-        sh 'oc rollout status deployment/oauth-openshift \
--n openshift-authentication -w --timeout 360s'
+        sh './wait_oauth.sh'
       }
     }
     stage ('Verify test user') {
