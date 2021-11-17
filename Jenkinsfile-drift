@@ -2,9 +2,6 @@ pipeline {
   triggers {
     cron ('H/5 * * * *')
   }
-  options {
-    buildDiscarder (logRotator (numToKeepStr: '15', artifactNumToKeepStr: '15'))
-  }
   agent {
     node {
       label 'nodejs'
